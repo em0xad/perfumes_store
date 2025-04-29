@@ -1,0 +1,45 @@
+:root {
+    /* الألوان */
+    --golden: rgb(210, 159, 19);         /* Golden */
+    --dusty-pink: rgb(221, 188, 176);    /* Dusty Pink */
+    --stone: rgb(51, 63, 72);            /* Stone */
+    --blanc: #f3efed;                    /* Blanc */
+  
+    /* الخطوط */
+    --font-heading: 'Playfair Display', serif;
+    --font-base: 'Poppins', sans-serif;
+  }
+  
+  /* التطبيق العام */
+  body {
+    font-family: var(--font-base);
+    background-color: var(--blanc);
+    color: var(--stone);
+  }
+  
+  /* العناوين */
+  h1, h2 {
+    font-family: var(--font-heading);
+    color: var(--stone);
+  }
+  
+  /* الأزرار */
+  .btn {
+    background-color: var(--stone);
+    border-color: var(--stone);
+  }
+  
+  .btn:hover {
+    background-color: var(--dusty-pink);
+    border-color: var(--dusty-pink);
+  }
+  
+  /* الروابط */
+  a {
+    color: var(--golden);
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
