@@ -1,3 +1,52 @@
+<?php
+session_start();
+require 'db_connection.php';
+
+$errors = [];
+$email = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST["email"]);
+    $password = $_POST["password"];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email address.";
+    }
+    if (empty($password)) {
+        $errors[] = "Password is required.";
+    }
+
+    if (empty($errors)) {
+        $stmt = $conn->prepare(
+            "SELECT id, username, password, role FROM users WHERE email = ?"
+        );
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows == 1) {
+            $stmt->bind_result($id, $username, $hashed, $role);
+            $stmt->fetch();
+            if (password_verify($password, $hashed)) {
+                // تخزين البيانات في الجلسة
+                $_SESSION["user_id"]   = $id;
+                $_SESSION["username"]  = $username;
+                $_SESSION["role"]      = $role;
+
+                header("Location: index.php");
+                exit;
+            } else {
+                $errors[] = "Incorrect password.";
+            }
+        } else {
+            $errors[] = "Email not found.";
+        }
+
+        $stmt->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +68,17 @@
 
 <div class="container mt-5" style="max-width: 500px;">
   <h2 class="text-center mb-4" style="font-family: var(--font-heading);">Login</h2>
-
+    <br>
+  <?php if (!empty($errors)): ?>
+  <div class="alert alert-danger">
+    <ul>
+      <?php foreach ($errors as $error): ?>
+        <li><?= htmlspecialchars($error) ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+<?php endif; ?>
+<br>
   <form method="POST" action="login.php">
     <div class="mb-3">
       <label for="email" class="form-label" style="font-family: var(--font-base);">Email Address</label>

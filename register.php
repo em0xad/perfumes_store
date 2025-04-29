@@ -1,3 +1,65 @@
+<?php
+session_start();
+require 'db_connection.php';
+
+$errors = [];
+$username = '';
+$email = '';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $username = trim($_POST["username"]);
+    $email = trim($_POST["email"]);
+    $password = $_POST["password"];
+    $confirm = $_POST["confirm_password"];
+
+    
+    if (empty($username)) {
+        $errors[] = "Username is required.";
+    } elseif (strlen($username) < 3) {
+        $errors[] = "Username must be at least 3 characters.";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email address.";
+    }
+
+    if (strlen($password) < 6) {
+        $errors[] = "Password must be at least 6 characters.";
+    }
+
+    if ($password !== $confirm) {
+        $errors[] = "Passwords do not match.";
+    }
+    
+    // تحقق من أن البريد غير مستخدم
+    if (empty($errors)) {
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows > 0) {
+            $errors[] = "Email is already registered.";
+        }
+        $stmt->close();
+    }
+
+    // إذا لا يوجد أخطاء، قم بإدخال البيانات
+    if (empty($errors)) {
+        $hashed = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $hashed);
+        if ($stmt->execute()) {
+            header("Location: login.php");
+            exit;
+        } else {
+            $errors[] = "Something went wrong, please try again.";
+        }
+        $stmt->close();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +81,18 @@
 
 <div class="container mt-5" style="max-width: 500px;">
   <h2 class="text-center mb-4" style="font-family: var(--font-heading);">Create New Account</h2>
+
+  <br>
+  <?php if (!empty($errors)): ?>
+  <div class="alert alert-danger">
+    <ul>
+      <?php foreach ($errors as $error): ?>
+        <li><?= htmlspecialchars($error) ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+<?php endif; ?>
+  <br>
 
   <form method="POST" action="register.php">
     <div class="mb-3">
