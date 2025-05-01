@@ -4,7 +4,8 @@ $role = $_SESSION['role'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
+<style>     @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+</style>
 <head>
   <meta charset="UTF-8">
   <title>Emad Aladl | perfume </title>
@@ -14,67 +15,7 @@ $role = $_SESSION['role'] ?? null;
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Marhey:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
-
-  body {
-    font-family: 'IBM Plex Sans Arabic','Alexandria','Cairo', sans-serif;
-    background-color: #F3EFED;
-  }
-
-  .navbar {
-    background-color: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1030;
-  }
-
-  .navbar-brand {
-    color: #D29F13;
-    font-weight: bold;
-    text-decoration: none !important;
-  }
-
-  .nav-link {
-    color: #333F48 !important;
-  }
-
-  .section-title {
-    color: #333F48;
-    margin-bottom: 30px;
-  }
-
-  .card-title {
-    color: #D29F13;
-  }
-
-  .btn-primary {
-    background-color: #D29F13;
-    border-color: #D29F13;
-  }
-
-  .btn-primary:hover {
-    background-color: #b88a11;
-    border-color: #b88a11;
-  }
-
-  .product-card img {
-    height: 200px;
-    object-fit: cover;
-    background-color: #ddd;
-  }
-
-  footer {
-    background-color: #333F48;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-</style>
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 
 </head>
 
@@ -86,7 +27,7 @@ $role = $_SESSION['role'] ?? null;
     
     <!-- العنصر في المنتصف -->
     <a class="navbar-brand position-absolute top-50 start-50 translate-middle d-flex align-items-center" href="index.php">
-      <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
+      <span style="color: #D29F13;font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
       <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="height: 50px; width: auto;">
     </a>
 
@@ -130,7 +71,6 @@ $role = $_SESSION['role'] ?? null;
     <div class="container">
       <h1 class="display-4 fw-bold" style="color:#D29F13;">اكتشف عالم العطور</h1>
       <p class="lead" style="color: #fff;">"كل عطر حكاية... وأجمل الحكايات تبدأ من الشرق."</p>
-      <a href="products.php" class="btn btn-primary btn-lg mt-3">تصفح المنتجات</a>
     </div>
   </section>
 
@@ -149,7 +89,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Dolce & Gabbana Women </h5>
               <p class="card-text">وصف مختصر عن المنتج الأكثر مبيعًا.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -159,7 +99,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Jean Paul Gaultier  </h5>
               <p class="card-text">وصف مختصر عن المنتج الأكثر مبيعًا.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -169,7 +109,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Carolina Harrera Women 212 VIP  </h5>
               <p class="card-text">وصف مختصر عن المنتج الأكثر مبيعًا.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -188,7 +128,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Jaguar Men Classic EDT  </h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -198,7 +138,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Versace Men Dylan</h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -208,7 +148,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">GIORGIO ARMANI Aqua Di Gio</h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -218,7 +158,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Dunhill Men Icon Elite</h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -228,7 +168,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Paco Rabbane Men Invictus </h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -238,7 +178,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Carolina Harrera Bad Boy</h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -257,7 +197,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title"> Dolce & Gabbana Women The Only</h5>
               <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -267,7 +207,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Michael Kors Women Sexy</h5>
               <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -278,7 +218,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title"> Bvlgari Splendid Jasmin Noir </h5>
               <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -289,7 +229,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Versace Pour Femme Dylan Blue</h5>
               <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -300,7 +240,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Carolina Herrera Women Good Girl</h5>
               <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -310,7 +250,7 @@ $role = $_SESSION['role'] ?? null;
             <div class="card-body">
               <h5 class="card-title">Jean Paul Gaultier Women Scandal</h5>
               <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-primary w-100">عرض التفاصيل</a>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
@@ -326,7 +266,7 @@ $role = $_SESSION['role'] ?? null;
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p class="mb-0">© 2025 عطورات  Emad Aladl - جميع الحقوق محفوظة</p>
+      <p class="mb-0">© 2025 عطورات  <span style="font-family: 'Monsieur La Doulaise'">Emad  Aladel</span> - جميع الحقوق محفوظة</p>
     </div>
   </footer>
 

@@ -1,13 +1,15 @@
 :root {
-    /* الألوان */
+    /*font embed*/
+     @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Marhey:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
     --golden: rgb(210, 159, 19);         /* Golden */
     --dusty-pink: rgb(221, 188, 176);    /* Dusty Pink */
     --stone: rgb(51, 63, 72);            /* Stone */
     --blanc: #f3efed;                    /* Blanc */
   
     /* الخطوط */
-    --font-heading: 'Playfair Display', serif;
-    --font-base: 'Poppins', sans-serif;
+    --font-heading:font-family:'IBM Plex Sans Arabic','Cairo', sans-serif !important;
+    --font-base:'IBM Plex Sans Arabic','Cairo', sans-serif !important;
   }
   
   /* التطبيق العام */
@@ -23,17 +25,7 @@
     color: var(--stone);
   }
   
-  /* الأزرار */
-  .btn {
-    background-color: var(--stone);
-    border-color: var(--stone);
-  }
-  
-  .btn:hover {
-    background-color: var(--dusty-pink);
-    border-color: var(--dusty-pink);
-  }
-  
+
   /* الروابط */
   a {
     color: var(--golden);
@@ -51,4 +43,57 @@
   }
 
   /*index page*/
-  
+ 
+ 
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+  }
+
+  .navbar-brand {
+    color: #D29F13;
+    font-weight: bold;
+    text-decoration: none !important;
+  }
+
+  .nav-link {
+    color: #333F48 !important;
+  }
+
+  .section-title {
+    color: #333F48;
+    margin-bottom: 30px;
+  }
+
+  .card-title {
+    color: #D29F13;
+  }
+
+  .btn-stone {
+    background-color:rgb(51, 63, 72);  ;
+    border-color: #8B8B8B;
+    color: white;
+  }
+
+  .btn-stone:hover {
+    background-color: #6B6B6B;
+    border-color: #6B6B6B;
+    color: white;
+  }
+
+  .product-card img {
+    height: 200px;
+    object-fit: cover;
+    background-color: #ddd;
+  }
+
+  footer {
+    background-color: #333F48;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
