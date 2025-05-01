@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Marhey:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
 :root {
     /*font embed*/
-     @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Marhey:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 
     --golden: rgb(210, 159, 19);         /* Golden */
     --dusty-pink: rgb(221, 188, 176);    /* Dusty Pink */
@@ -8,10 +14,18 @@
     --blanc: #f3efed;                    /* Blanc */
   
     /* الخطوط */
-    --font-heading:font-family:'IBM Plex Sans Arabic','Cairo', sans-serif !important;
-    --font-base:'IBM Plex Sans Arabic','Cairo', sans-serif !important;
+    --font-heading:font-family:'IBM Plex Sans Arabic','Cairo', sans-serif ;
+    --font-base:'IBM Plex Sans Arabic','Cairo', sans-serif ;
   }
   
+ 
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-X: hidden; 
+  direction: rtl;
+}
   /* التطبيق العام */
   body {
     font-family: var(--font-base);
@@ -85,15 +99,37 @@
     color: white;
   }
 
-  .product-card img {
+ 
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-card img {
     height: 200px;
     object-fit: cover;
     background-color: #ddd;
-  }
+    width: 100%;
+}
 
+.product-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
   footer {
     background-color: #333F48;
     color: white;
     padding: 20px 0;
     text-align: center;
   }
+
+

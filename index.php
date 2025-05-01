@@ -4,7 +4,10 @@ $role = $_SESSION['role'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<style>     @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+<style> 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
 </style>
 <head>
   <meta charset="UTF-8">
@@ -25,21 +28,18 @@ $role = $_SESSION['role'] ?? null;
   <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
   <div class="container position-relative justify-content-center">
     
-    <!-- العنصر في المنتصف -->
     <a class="navbar-brand position-absolute top-50 start-50 translate-middle d-flex align-items-center" href="index.php">
       <span style="color: #D29F13;font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
       <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="height: 75px; width: auto;">
     </a>
 
-    <!-- زر القائمة على اليمين -->
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
       <img src="images/icon/menu.png" alt="Menu" style="height: 30px; width: auto;">
     </button>
 
-    <!-- العناصر اليسار واليمين -->
     <div class="collapse navbar-collapse" id="navbarMain">
-      <!-- القائمة اليمنى -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="index.php">الرئيسية</a></li>
         <li class="nav-item"><a class="nav-link" href="#men-perfumes">عطور له</a></li>
         <li class="nav-item"><a class="nav-link" href="#women-perfumes">عطور لها</a></li>
@@ -49,7 +49,6 @@ $role = $_SESSION['role'] ?? null;
         <?php endif; ?>
       </ul>
 
-      <!-- القائمة اليسرى -->
       <ul class="navbar-nav ms-auto">
         <?php if ($role): ?>
           <li class="nav-item"><a class="nav-link" href="logout.php">تسجيل الخروج</a></li>
@@ -84,7 +83,7 @@ $role = $_SESSION['role'] ?? null;
       <hr>
       <div class="row">
 
-        <div class="col-md-4 mb-4 d-flex  d-flex " >
+        <div class="col-md-4 mb-4  d-flex " >
           <div class="card product-card">
             <img src="images/best-product/B1-1.png" alt="صورة المنتج " class="card-img-top">
             <div class="card-body">
@@ -94,7 +93,7 @@ $role = $_SESSION['role'] ?? null;
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex  d-flex ">
+        <div class="col-md-4 mb-4   d-flex ">
           <div class="card product-card">
             <img src="images/best-product/B2-1.png" alt="صورة المنتج " class="card-img-top">
             <div class="card-body">
@@ -104,7 +103,7 @@ $role = $_SESSION['role'] ?? null;
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex  d-flex ">
+        <div class="col-md-4 mb-4   d-flex ">
           <div class="card product-card">
             <img src="images/best-product/B3-1.png" alt="صورة المنتج " class="card-img-top">
             <div class="card-body">
@@ -131,9 +130,9 @@ $role = $_SESSION['role'] ?? null;
       <hr>
       <div class="row">
 
-        <div class="col-md-4 mb-4 d-flex  d-flex ">
+        <div class="col-md-4 mb-4   d-flex ">
           <div class="card product-card">
-            <img src="images/products/Men/1-1.png" alt="عطر رجالي  class=" card-img-top">
+            <img src="images/products/Men/1-1.png" alt="عطر رجالي " class=" card-img-top">
             <div class="card-body">
               <h5 class="card-title">Jaguar Men Classic EDT  </h5>
               <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
@@ -141,7 +140,7 @@ $role = $_SESSION['role'] ?? null;
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex  d-flex ">
+        <div class="col-md-4 mb-4 d-flex   ">
           <div class="card product-card">
             <img src="images/products/Men/2-1.png" alt="عطر رجالي "class="card-img-top">
             <div class="card-body">
@@ -151,7 +150,7 @@ $role = $_SESSION['role'] ?? null;
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex  d-flex ">
+        <div class="col-md-4 mb-4 d-flex  ">
           <div class="card product-card">
             <img src="images/products/Men/3-1.png"  alt="عطر رجالي "class="card-img-top">
             <div class="card-body">
