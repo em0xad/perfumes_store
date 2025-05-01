@@ -28,7 +28,7 @@ $role = $_SESSION['role'] ?? null;
     <!-- العنصر في المنتصف -->
     <a class="navbar-brand position-absolute top-50 start-50 translate-middle d-flex align-items-center" href="index.php">
       <span style="color: #D29F13;font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
-      <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="height: 50px; width: auto;">
+      <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="height: 75px; width: auto;">
     </a>
 
     <!-- زر القائمة على اليمين -->
@@ -43,6 +43,7 @@ $role = $_SESSION['role'] ?? null;
         <li class="nav-item"><a class="nav-link" href="index.php">الرئيسية</a></li>
         <li class="nav-item"><a class="nav-link" href="#men-perfumes">عطور له</a></li>
         <li class="nav-item"><a class="nav-link" href="#women-perfumes">عطور لها</a></li>
+        <li class="nav-item"><a class="nav-link" href="#unisex-perfumes">عطور للجنسسين</a></li>
         <?php if ($role === 'admin'): ?>
           <li class="nav-item"><a class="nav-link" href="users.php">لوحة التحكم</a></li>
         <?php endif; ?>
@@ -116,6 +117,14 @@ $role = $_SESSION['role'] ?? null;
       </div>
     </section>
 
+  </div>
+
+  <!-- Decorative Image 1 -->
+  <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
+    <img src="images/banner/5.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
+  </div>
+
+  <div class="container">
     <!-- عطور رجالية -->
     <section class="mb-5">
       <h2 class="text-center section-title" id="men-perfumes">عطور رجالية</h2>
@@ -185,7 +194,14 @@ $role = $_SESSION['role'] ?? null;
 
       </div>
     </section>
+  </div>
 
+  <!-- Decorative Image 2 -->
+  <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
+    <img src="images/banner/4.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
+  </div>
+
+  <div class="container">
     <!-- عطور نسائية -->
     <section>
       <h2 class="text-center section-title" id="women-perfumes">عطور نسائية</h2>
@@ -255,13 +271,87 @@ $role = $_SESSION['role'] ?? null;
           </div>
         </div>
 
-
-
-
+        
       </div>
     </section>
-
+           
   </div>
+           <!-- Decorative Image 3 -->
+           <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
+              <img src="images/banner/3.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
+            </div>
+           <!-- عطور للجنسيين -->
+    <section>
+      <h2 class="text-center section-title"  id="unisex-perfumes">عطور للجنسيين</h2>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 mb-4 d-flex ">
+          <div class="card product-card">
+            <img src="images/products/Unisex/1-1.png" alt="عطر نسائي " class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"> Dolce & Gabbana Women The Only</h5>
+              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex ">
+          <div class="card product-card">
+            <img src="images/products/Unisex//2-1.png" alt="Michael Kors Women Sexy " class="card-img-top">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Michael Kors Women Sexy</h5>
+              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 d-flex ">
+          <div class="card product-card">
+            <img src="images/products/Unisex//3-1.png" alt=" Bvlgari Splendid Jasmin Noir " class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"> Bvlgari Splendid Jasmin Noir </h5>
+              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 d-flex ">
+          <div class="card product-card">
+            <img src="images/products/Unisex/4-1.png" alt="عطر نسائي " class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Versace Pour Femme Dylan Blue</h5>
+              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 d-flex ">
+          <div class="card product-card">
+            <img src="images/products/Unisex/5-1.png" alt="عطر نسائي " class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Carolina Herrera Women Good Girl</h5>
+              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex ">
+          <div class="card product-card">
+            <img src="images/products/Unisex/6-1.png" alt="عطر نسائي " class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Jean Paul Gaultier Women Scandal</h5>
+              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
+              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
 
   <!-- Footer -->
   <footer>
