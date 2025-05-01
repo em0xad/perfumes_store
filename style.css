@@ -42,4 +42,13 @@
   a:hover {
     text-decoration: underline;
   }
+  hr{
+    border: none;
+    background-color: var(--golden);
+    height: 2px;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  /*index page*/
   
