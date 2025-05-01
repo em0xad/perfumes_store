@@ -17,6 +17,7 @@ $role = $_SESSION['role'] ?? null;
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Marhey:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
 
   body {
     font-family: 'IBM Plex Sans Arabic','Alexandria','Cairo', sans-serif;
@@ -80,28 +81,33 @@ $role = $_SESSION['role'] ?? null;
 <body>
 
   <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="index.php">
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+  <div class="container position-relative justify-content-center">
+    
+    <!-- العنصر في المنتصف -->
+    <a class="navbar-brand position-absolute top-50 start-50 translate-middle d-flex align-items-center" href="index.php">
+      <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
       <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="height: 50px; width: auto;">
-      <span style="color: #D29F13; font-weight: bold;">Emad Aaldl</span>
     </a>
 
+    <!-- زر القائمة على اليمين -->
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-       <img src="images/icon/menu.png" alt="Menu" style="height: 30px; width: auto;">
+      <img src="images/icon/menu.png" alt="Menu" style="height: 30px; width: auto;">
     </button>
 
-
+    <!-- العناصر اليسار واليمين -->
     <div class="collapse navbar-collapse" id="navbarMain">
+      <!-- القائمة اليمنى -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="index.php">الرئيسية</a></li>
         <li class="nav-item"><a class="nav-link" href="#men-perfumes">عطور له</a></li>
         <li class="nav-item"><a class="nav-link" href="#women-perfumes">عطور لها</a></li>
-        
         <?php if ($role === 'admin'): ?>
           <li class="nav-item"><a class="nav-link" href="users.php">لوحة التحكم</a></li>
         <?php endif; ?>
       </ul>
+
+      <!-- القائمة اليسرى -->
       <ul class="navbar-nav ms-auto">
         <?php if ($role): ?>
           <li class="nav-item"><a class="nav-link" href="logout.php">تسجيل الخروج</a></li>
@@ -111,8 +117,10 @@ $role = $_SESSION['role'] ?? null;
         <?php endif; ?>
       </ul>
     </div>
+
   </div>
 </nav>
+
 
 
 
