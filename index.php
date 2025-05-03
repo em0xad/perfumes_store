@@ -1,36 +1,27 @@
 <?php
 session_start();
 $role = $_SESSION['role'] ?? null;
+include 'Database/db_connection.php';
 
-// Include database connection
-require_once 'Database/db_connection.php';
+// جلب المنتجات من قاعدة البيانات
+$men_products = [];
+$women_products = [];
+$unisex_products = [];
+$best_selling = [];
 
-// Fetch all products from database
-$query = "SELECT * FROM products";
-$result = mysqli_query($conn, $query);
-
-// Initialize arrays for different categories
-$best_sellers = [];
-$mens_perfumes = [];
-$womens_perfumes = [];
-$unisex_perfumes = [];
-
-// Categorize products
-while ($product = mysqli_fetch_assoc($result)) {
-    // First 3 products are best sellers
-    if (count($best_sellers) < 3) {
-        $best_sellers[] = $product;
-    }
-    
-    // Categorize based on product name
-    if (stripos($product['product_name'], 'men') !== false || 
-        stripos($product['product_name'], 'رجالي') !== false) {
-        $mens_perfumes[] = $product;
-    } elseif (stripos($product['product_name'], 'women') !== false || 
-              stripos($product['product_name'], 'نسائي') !== false) {
-        $womens_perfumes[] = $product;
-    } else {
-        $unisex_perfumes[] = $product;
+$result = $conn->query("SELECT * FROM products");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        if (stripos($row['images'], 'Men') !== false) {
+            $men_products[] = $row;
+        } elseif (stripos($row['images'], 'women') !== false) {
+            $women_products[] = $row;
+        } elseif (stripos($row['images'], 'Unisex') !== false) {
+            $unisex_products[] = $row;
+        }
+        if (count($best_selling) < 3) {
+            $best_selling[] = $row;
+        }
     }
 }
 ?>
@@ -114,18 +105,36 @@ while ($product = mysqli_fetch_assoc($result)) {
       <h2 class="text-center section-title">الأكثر مبيعًا</h2>
       <hr>
       <div class="row">
-        <?php foreach ($best_sellers as $product): ?>
         <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="صورة المنتج" class="card-img-top">
+            <img src="images/best-product/B1-1.png" alt="صورة المنتج" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <h5 class="card-title">Dolce & Gabbana Women</h5>
+              <p class="card-text">عطر نسائي كلاسيكي يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الياسمين والورد.</p>
+              <a href="localhostproduct.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/best-product/B2-1.png" alt="صورة المنتج" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Jean Paul Gaultier</h5>
+              <p class="card-text">عطر جريء يجمع بين الفانيليا الدافئة والمسك، مع لمسة من الزنجبيل والحمضيات.</p>
               <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <?php endforeach; ?>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/best-product/B3-1.png" alt="صورة المنتج" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Carolina Harrera Women 212 VIP</h5>
+              <p class="card-text">عطر أنثوي فاخر يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الفانيليا.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -142,18 +151,66 @@ while ($product = mysqli_fetch_assoc($result)) {
       <h2 class="text-center section-title" id="men-perfumes">عطور رجالية</h2>
       <hr>
       <div class="row">
-        <?php foreach ($mens_perfumes as $product): ?>
         <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="عطر رجالي" class="card-img-top">
+            <img src="images/products/Men/1-1.png" alt="عطر رجالي" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <h5 class="card-title">Jaguar Men Classic EDT</h5>
+              <p class="card-text">عطر رجالي كلاسيكي يجمع بين نضارة الحمضيات ودفء الخشب، مع لمسة من التوابل.</p>
               <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <?php endforeach; ?>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Men/2-1.png" alt="عطر رجالي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Versace Men Dylan</h5>
+              <p class="card-text">عطر رجالي عصري يجمع بين نضارة الحمضيات ودفء الخشب، مع لمسة من المسك.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Men/3-1.png" alt="عطر رجالي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">GIORGIO ARMANI Aqua Di Gio</h5>
+              <p class="card-text">عطر رجالي كلاسيكي يجمع بين نضارة الحمضيات البحرية ودفء المسك، مع لمسة من الخشب.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Men/4-1.png" alt="عطر رجالي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Dunhill Men Icon Elite</h5>
+              <p class="card-text">عطر رجالي فاخر يجمع بين نضارة الحمضيات ودفء الخشب، مع لمسة من التوابل.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Men/5-1.png" alt="عطر رجالي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Paco Rabbane Men Invictus</h5>
+              <p class="card-text">عطر رجالي جريء يجمع بين نضارة الحمضيات ودفء الخشب، مع لمسة من المسك.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Men/6-1.png" alt="عطر رجالي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Carolina Harrera Bad Boy</h5>
+              <p class="card-text">عطر رجالي جريء يجمع بين نضارة الحمضيات ودفء الخشب، مع لمسة من التوابل.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -165,22 +222,70 @@ while ($product = mysqli_fetch_assoc($result)) {
 
   <div class="container">
     <!-- عطور نسائية -->
-    <section class="mb-5">
+    <section>
       <h2 class="text-center section-title" id="women-perfumes">عطور نسائية</h2>
       <hr>
       <div class="row">
-        <?php foreach ($womens_perfumes as $product): ?>
         <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="عطر نسائي" class="card-img-top">
+            <img src="images/products/women/1-1.png" alt="عطر نسائي" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <h5 class="card-title">Dolce & Gabbana Women The Only</h5>
+              <p class="card-text">عطر نسائي فاخر يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الفانيليا.</p>
               <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <?php endforeach; ?>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/women/2-1.png" alt="عطر نسائي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Michael Kors Women Sexy</h5>
+              <p class="card-text">عطر نسائي جريء يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الفانيليا.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/women/3-1.png" alt="عطر نسائي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Bvlgari Splendid Jasmin Noir</h5>
+              <p class="card-text">عطر نسائي فاخر يجمع بين نضارة الياسمين ودفء المسك، مع لمسة من الفانيليا.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/women/4-1.png" alt="عطر نسائي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Versace Pour Femme Dylan Blue</h5>
+              <p class="card-text">عطر نسائي عصري يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الفانيليا.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/women/5-1.png" alt="عطر نسائي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Carolina Herrera Women Good Girl</h5>
+              <p class="card-text">عطر نسائي جريء يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الفانيليا.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/women/6-1.png" alt="عطر نسائي" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Jean Paul Gaultier Women Scandal</h5>
+              <p class="card-text">عطر نسائي جريء يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الفانيليا.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
            
@@ -190,22 +295,70 @@ while ($product = mysqli_fetch_assoc($result)) {
               <img src="images/banner/3.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
             </div>
            <!-- عطور للجنسين -->
-    <section class="mb-5">
-      <h2 class="text-center section-title" id="unisex-perfumes">عطور للجنسين</h2>
+    <section>
+      <h2 class="text-center section-title"  id="unisex-perfumes">عطور للجنسين</h2>
       <hr>
       <div class="row">
-        <?php foreach ($unisex_perfumes as $product): ?>
         <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="عطر للجنسين" class="card-img-top">
+            <img src="images/products/Unisex/1-1.png" alt="عطر للجنسين" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <h5 class="card-title">Dolce & Gabbana Women The Only</h5>
+              <p class="card-text">عطر للجنسين يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الخشب.</p>
               <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <?php endforeach; ?>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Unisex/2-1.png" alt="عطر للجنسين" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Michael Kors Women Sexy</h5>
+              <p class="card-text">عطر للجنسين يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الخشب.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Unisex/3-1.png" alt="عطر للجنسين" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Bvlgari Splendid Jasmin Noir</h5>
+              <p class="card-text">عطر للجنسين يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الخشب.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Unisex/4-1.png" alt="عطر للجنسين" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Versace Pour Femme Dylan Blue</h5>
+              <p class="card-text">عطر للجنسين يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الخشب.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Unisex/5-1.png" alt="عطر للجنسين" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Carolina Herrera Women Good Girl</h5>
+              <p class="card-text">عطر للجنسين يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الخشب.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 d-flex">
+          <div class="card product-card">
+            <img src="images/products/Unisex/6-1.png" alt="عطر للجنسين" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Jean Paul Gaultier Women Scandal</h5>
+              <p class="card-text">عطر للجنسين يجمع بين نضارة الحمضيات ودفء المسك، مع لمسة من الخشب.</p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
