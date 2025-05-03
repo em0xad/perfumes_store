@@ -1,6 +1,38 @@
 <?php
 session_start();
 $role = $_SESSION['role'] ?? null;
+
+// Include database connection
+require_once 'Database/db_connection.php';
+
+// Fetch all products from database
+$query = "SELECT * FROM products";
+$result = mysqli_query($conn, $query);
+
+// Initialize arrays for different categories
+$best_sellers = [];
+$mens_perfumes = [];
+$womens_perfumes = [];
+$unisex_perfumes = [];
+
+// Categorize products
+while ($product = mysqli_fetch_assoc($result)) {
+    // First 3 products are best sellers
+    if (count($best_sellers) < 3) {
+        $best_sellers[] = $product;
+    }
+    
+    // Categorize based on product name
+    if (stripos($product['product_name'], 'men') !== false || 
+        stripos($product['product_name'], 'رجالي') !== false) {
+        $mens_perfumes[] = $product;
+    } elseif (stripos($product['product_name'], 'women') !== false || 
+              stripos($product['product_name'], 'نسائي') !== false) {
+        $womens_perfumes[] = $product;
+    } else {
+        $unisex_perfumes[] = $product;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -14,6 +46,7 @@ $role = $_SESSION['role'] ?? null;
   <title>Emad Aladl | perfume </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -81,37 +114,18 @@ $role = $_SESSION['role'] ?? null;
       <h2 class="text-center section-title">الأكثر مبيعًا</h2>
       <hr>
       <div class="row">
-
-        <div class="col-md-4 mb-4  d-flex " >
+        <?php foreach ($best_sellers as $product): ?>
+        <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/best-product/B1-1.png" alt="صورة المنتج " class="card-img-top">
+            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="صورة المنتج" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title">Dolce & Gabbana Women </h5>
-              <p class="card-text">وصف مختصر عن المنتج الأكثر مبيعًا.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
+              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4   d-flex ">
-          <div class="card product-card">
-            <img src="images/best-product/B2-1.png" alt="صورة المنتج " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Jean Paul Gaultier  </h5>
-              <p class="card-text">وصف مختصر عن المنتج الأكثر مبيعًا.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4   d-flex ">
-          <div class="card product-card">
-            <img src="images/best-product/B3-1.png" alt="صورة المنتج " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Carolina Harrera Women 212 VIP  </h5>
-              <p class="card-text">وصف مختصر عن المنتج الأكثر مبيعًا.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </section>
 
@@ -128,68 +142,18 @@ $role = $_SESSION['role'] ?? null;
       <h2 class="text-center section-title" id="men-perfumes">عطور رجالية</h2>
       <hr>
       <div class="row">
-
-        <div class="col-md-4 mb-4   d-flex ">
+        <?php foreach ($mens_perfumes as $product): ?>
+        <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/Men/1-1.png" alt="عطر رجالي " class=" card-img-top">
+            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="عطر رجالي" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title">Jaguar Men Classic EDT  </h5>
-              <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
+              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex   ">
-          <div class="card product-card">
-            <img src="images/products/Men/2-1.png" alt="عطر رجالي "class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Versace Men Dylan</h5>
-              <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 d-flex  ">
-          <div class="card product-card">
-            <img src="images/products/Men/3-1.png"  alt="عطر رجالي "class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">GIORGIO ARMANI Aqua Di Gio</h5>
-              <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Men/4-1.png"  alt="عطر رجالي "class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Dunhill Men Icon Elite</h5>
-              <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Men/5-1.png"  alt="عطر رجالي "class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Paco Rabbane Men Invictus </h5>
-              <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Men/6-1.png"  alt="عطر رجالي "class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Carolina Harrera Bad Boy</h5>
-              <p class="card-text">رائحة قوية وعصرية تناسب الرجل العصري.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
+        <?php endforeach; ?>
       </div>
     </section>
   </div>
@@ -201,75 +165,22 @@ $role = $_SESSION['role'] ?? null;
 
   <div class="container">
     <!-- عطور نسائية -->
-    <section>
+    <section class="mb-5">
       <h2 class="text-center section-title" id="women-perfumes">عطور نسائية</h2>
       <hr>
       <div class="row">
-        <div class="col-md-4 mb-4 d-flex ">
+        <?php foreach ($womens_perfumes as $product): ?>
+        <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/women/1-1.png" alt="عطر نسائي " class="card-img-top">
+            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="عطر نسائي" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"> Dolce & Gabbana Women The Only</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
+              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/women/2-1.png" alt="Michael Kors Women Sexy " class="card-img-top">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Michael Kors Women Sexy</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/women/3-1.png" alt=" Bvlgari Splendid Jasmin Noir " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"> Bvlgari Splendid Jasmin Noir </h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/women/4-1.png" alt="عطر نسائي " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Versace Pour Femme Dylan Blue</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/women/5-1.png" alt="عطر نسائي " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Carolina Herrera Women Good Girl</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/women/6-1.png" alt="عطر نسائي " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Jean Paul Gaultier Women Scandal</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        
+        <?php endforeach; ?>
       </div>
     </section>
            
@@ -278,76 +189,23 @@ $role = $_SESSION['role'] ?? null;
            <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
               <img src="images/banner/3.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
             </div>
-           <!-- عطور للجنسيين -->
-    <section>
-      <h2 class="text-center section-title"  id="unisex-perfumes">عطور للجنسيين</h2>
+           <!-- عطور للجنسين -->
+    <section class="mb-5">
+      <h2 class="text-center section-title" id="unisex-perfumes">عطور للجنسين</h2>
       <hr>
       <div class="row">
-        <div class="col-md-4 mb-4 d-flex ">
+        <?php foreach ($unisex_perfumes as $product): ?>
+        <div class="col-md-4 mb-4 d-flex">
           <div class="card product-card">
-            <img src="images/products/Unisex/1-1.png" alt="عطر نسائي " class="card-img-top">
+            <img src="images/products/<?php echo htmlspecialchars($product['images']); ?>" alt="عطر للجنسين" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"> Dolce & Gabbana Women The Only</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
+              <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
+              <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+              <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Unisex//2-1.png" alt="Michael Kors Women Sexy " class="card-img-top">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Michael Kors Women Sexy</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Unisex//3-1.png" alt=" Bvlgari Splendid Jasmin Noir " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"> Bvlgari Splendid Jasmin Noir </h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Unisex/4-1.png" alt="عطر نسائي " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Versace Pour Femme Dylan Blue</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Unisex/5-1.png" alt="عطر نسائي " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Carolina Herrera Women Good Girl</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 d-flex ">
-          <div class="card product-card">
-            <img src="images/products/Unisex/6-1.png" alt="عطر نسائي " class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Jean Paul Gaultier Women Scandal</h5>
-              <p class="card-text">عبير أنثوي ناعم يدوم طوال اليوم.</p>
-              <a href="#" class="btn btn-stone w-100">عرض التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        
+        <?php endforeach; ?>
       </div>
     </section>
 
@@ -357,7 +215,6 @@ $role = $_SESSION['role'] ?? null;
       <p class="mb-0">© 2025 عطورات  <span style="font-family: 'Monsieur La Doulaise'">Emad  Aladel</span> - جميع الحقوق محفوظة</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
