@@ -28,8 +28,6 @@ if ($result) {
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <style> 
-
-
 @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
 </style>
 <head>
@@ -47,31 +45,29 @@ if ($result) {
 
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
-  <div class="container position-relative justify-content-center">
-    
-    <a class="navbar-brand position-absolute top-50 start-50 translate-middle d-flex align-items-center" href="index.php">
-      <span style="color: #D29F13;font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
-      <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="height: 75px; width: auto;">
+   <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+  <div class="container" style="margin-left: 0 !important;">
+  <a class="navbar-brand d-flex align-items-center justify-content-center" href="index.php" style="width: 81%; height: 100%;">
+      <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="max-width: 10%; height: auto; padding-bottom:0 px;margin-bottom:0 px;">
+      <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
     </a>
 
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-      <img src="images/icon/menu.png" alt="Menu" style="height: 30px; width: auto;">
+       <img src="images/icon/menu.png" alt="Menu" style="height: 30px; width: 35px;">
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarMain">
 
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="index.php">الرئيسية</a></li>
         <li class="nav-item"><a class="nav-link" href="#men-perfumes">عطور له</a></li>
         <li class="nav-item"><a class="nav-link" href="#women-perfumes">عطور لها</a></li>
-        <li class="nav-item"><a class="nav-link" href="#unisex-perfumes">عطور للجنسسين</a></li>
+        
         <?php if ($role === 'admin'): ?>
           <li class="nav-item"><a class="nav-link" href="users.php">لوحة التحكم</a></li>
         <?php endif; ?>
       </ul>
-
       <ul class="navbar-nav ms-auto">
         <?php if ($role): ?>
           <li class="nav-item"><a class="nav-link" href="logout.php">تسجيل الخروج</a></li>
@@ -81,13 +77,8 @@ if ($result) {
         <?php endif; ?>
       </ul>
     </div>
-
   </div>
 </nav>
-
-
-
-
   <!--banner-->
 
   <section class="hero-banner d-flex align-items-center text-center text-white" style="background-image: url('images//banner//slider1.jpg'); background-size: cover; background-position: center; height: 400px;">
@@ -367,6 +358,7 @@ if ($result) {
     <div class="container">
       <p class="mb-0">© 2025 عطورات  <span style="font-family: 'Monsieur La Doulaise'">Emad  Aladel</span> - جميع الحقوق محفوظة</p>
     </div>
+    
   </footer>
 
 </body>
