@@ -77,7 +77,35 @@ html, body {
   .nav-link {
     color: #333F48 !important;
   }
-
+   /* إخفاء القائمة الجانبية بشكل افتراضي */
+   #sidebar {
+    display: none;
+  }
+  
+  /* عندما تكون نشطة */
+  #sidebar.active {
+    display: block;
+  }
+  
+  /* تصميم القائمة الجانبية */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40;
+    padding-top: 20px;
+  }
+  #sidebar a {
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+  }
+  #sidebar a:hover {
+    background-color: #575757;
+  }
   .section-title {
     color: #333F48;
     margin-bottom: 30px;
