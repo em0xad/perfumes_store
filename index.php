@@ -142,7 +142,7 @@ if ($result) {
       <div class="card-body">
         <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
         <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="/product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
       </div>
     </div>
   </div>
@@ -171,7 +171,7 @@ if ($result) {
       <div class="card-body">
         <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
         <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="/product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
       </div>
     </div>
   </div>
@@ -199,7 +199,7 @@ if ($result) {
       <div class="card-body">
         <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
         <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="/product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
       </div>
     </div>
   </div>
@@ -225,7 +225,7 @@ if ($result) {
       <div class="card-body">
         <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
         <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="/product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
       </div>
     </div>
   </div>
