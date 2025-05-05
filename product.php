@@ -22,93 +22,38 @@ if (isset($_GET['id'])) {
     exit();
 }
 
+
 // غلق الاتصال بقاعدة البيانات
 $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل المنتج</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>/* تنسيقات عامة للصفحة */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-/* تنسيق عنوان الصفحة */
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-/* تنسيق تفاصيل المنتج */
-.product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.product-container .product-image {
-    flex: 1;
-    max-width: 500px;
-    margin-right: 20px;
-}
-
-.product-container .product-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.product-container .product-details {
-    flex: 1;
-    max-width: 500px;
-}
-
-.product-container .product-details h2 {
-    font-size: 2rem;
-    color: #222;
-    margin-bottom: 20px;
-}
-
-.product-container .product-details p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-/* تنسيق زر العودة */
-.btn-back {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.btn-back:hover {
-    background-color: #0056b3;
-}
-</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+      <div class="container" style="margin-left: 0 !important;">
+      <a class="navbar-brand d-flex align-items-center justify-content-center" href="index.php" style="width: 81%; height: 100%;">
+          <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="max-width: 10%; height: auto; padding-bottom:0 px;margin-bottom:0 px;">
+          <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
+      </a>
+
+      <button class="btn btn-outline-secondary " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+      ☰
+      </button>
+
+    </nav>
+
     <div class="container mt-5">
         <h1 class="text-center mb-4">تفاصيل المنتج</h1>
 
@@ -120,14 +65,14 @@ h1 {
             <div class="col-md-6">
                 <!-- عرض تفاصيل المنتج -->
                 <h2><?php echo htmlspecialchars($product['product_name']); ?></h2>
-                <p><strong>الفئة:</strong> <?php echo htmlspecialchars($product['category']); ?></p>
-                <p><strong>الوصف:</strong> <?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
+                <p><strong>الفئة:</strong> <?php  if (htmlspecialchars(str_replace('_', ' ', trim($product['category'])))=="best seller") echo'الأكثر مبيعا';  ?></p>
+                <p><strong>الوصف:</strong> <?php echo nl2br(htmlspecialchars($product['perfume_detail'])); ?></p>                <p><strong>السعر:</strong>  <span class="text-success fw-bold">$<?php echo htmlspecialchars($product['price']); ?></span>  </p>
             </div>
         </div>
         
-        <a href="index.php" class="btn btn-primary mt-4">العودة إلى الصفحة الرئيسية</a>
+        <a href="index.php" class="btn btn-stone w-50">   اشتري الآن</a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
