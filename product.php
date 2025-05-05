@@ -117,7 +117,19 @@ $conn->close();
             <div class="col-md-6">
                 <!-- عرض تفاصيل المنتج -->
                 <h2><?php echo htmlspecialchars($product['product_name']); ?></h2>
-                <p><strong>الفئة:</strong> <?php  if (htmlspecialchars(str_replace('_', ' ', trim($product['category'])))=="best seller") echo'الأكثر مبيعا';  ?></p>
+                <p><strong>الفئة:</strong> 
+                      <?php  
+                          if (htmlspecialchars(str_replace('_', ' ', trim($product['category']))) == "best seller") {
+                              echo 'الأكثر مبيعا';
+                          } elseif(htmlspecialchars($product['category'])=='men') {
+                              echo 'عطر رجالي';
+                          }
+                          else {
+                            echo 'عطر نسائي';
+                          }
+                       ?>
+                </p>
+
                 <p><strong>الوصف:</strong> <?php echo nl2br(htmlspecialchars($product['perfume_detail'])); ?></p>                <p><strong>السعر:</strong>  <span class="text-success fw-bold">$<?php echo htmlspecialchars($product['price']); ?></span>  </p>
             </div>
         </div>
