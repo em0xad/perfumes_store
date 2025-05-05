@@ -52,7 +52,59 @@ $conn->close();
       ☰
       </button>
 
-    </nav>
+</nav>
+
+
+    <!-- Side Nav (Offcanvas) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+      
+      <div class="offcanvas-header">
+        
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="close"></button>
+      </div>
+      
+      <div class="offcanvas-body">
+        <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+          <img src="images/logo/logo1.png" alt="Logo" style="height: 50px; width: auto;" class="me-2">
+          <span style="color: #D29F13; font-weight: bold;">Emad Aaldl</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="index.php" class="nav-link text-dark">الرئيسية</a>
+          </li>
+          <li>
+            <a href="#men-perfumes" class="nav-link text-dark">عطور له</a>
+          </li>
+          <li>
+            <a href="#women-perfumes" class="nav-link text-dark">عطور لها</a>
+          </li>
+          <li>
+            <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
+          </li>
+          <?php if ($role === 'admin'): ?>
+            <li><a href="users.php" class="nav-link text-dark">لوحة التحكم</a></li>
+          <?php endif; ?>
+        </ul>
+        <hr>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="images/icon/user.svg" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>الحساب</strong>
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
+            <?php if ($role): ?>
+              <li><a class="dropdown-item" href="logout.php">تسجيل الخروج</a></li>
+            <?php else: ?>
+              <li><a class="dropdown-item" href="login.php">تسجيل الدخول</a></li>
+              <li><a class="dropdown-item" href="register.php">إنشاء حساب</a></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <div class="container mt-5">
         <h1 class="text-center mb-4">تفاصيل المنتج</h1>
