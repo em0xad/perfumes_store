@@ -122,7 +122,7 @@ html, body {
   }
 
   .btn-stone:hover {
-    background-color: #6B6B6B;
+    background-color: #000000;
     border-color: #6B6B6B;
     color: white;
   }
@@ -222,4 +222,5 @@ html, body {
 .btn-back:hover {
   background-color: #0056b3;
 }
+
 

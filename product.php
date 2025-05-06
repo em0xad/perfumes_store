@@ -183,10 +183,15 @@ $conn->close();
             </p>
 
             <p><?php echo nl2br(htmlspecialchars($product['perfume_detail'])); ?></p> 
+            <h4>هرم العطر</h4>
+            <P><?php echo  nl2br( htmlspecialchars($product['perfume_notes'])); ?></P>
+
             <p><strong>السعر:</strong>  
                 <span class="text-success fw-bold">$<?php echo htmlspecialchars($product['price']); ?></span>
             </p>
-
+            <p><strong>الحجم:80 مل</strong>  
+                <span class="text-success fw-bold"></span>
+            </p>
             <!-- ✅ خانة الكمية -->
             <div class="mb-3">
                 <label for="quantity" class="form-label"><strong>الكمية:</strong></label>
@@ -194,8 +199,8 @@ $conn->close();
             </div>
 
             <!-- أزرار الشراء -->
-            <button class="btn btn-primary me-2" style="background-color: rgb(221, 188, 176);">اشتري الآن</button>
-            <a href="index.php" class="btn btn-secondary">رجوع</a>
+            <button class="btn btn-primary me-2" style="background-color: #D29F13;">اشتري الآن</button>
+            <a href="index.php" class="btn btn-stone btn-secondary">رجوع</a>
         </div>
     </div>
 </div>
