@@ -10,10 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email address.";
+        $errors[] = "عنوان البريد الإلكتروني غير صالح.";
     }
     if (empty($password)) {
-        $errors[] = "Password is required.";
+        $errors[] = "كلمة المرور مطلوبة.";
     }
 
     if (empty($errors)) {
@@ -36,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: index.php");
                 exit;
             } else {
-                $errors[] = "Incorrect password.";
+                $errors[] = "كلمة المرور غير صحيحة.";
             }
         } else {
-            $errors[] = "Email not found.";
+            $errors[] = "البريد الإلكتروني غير موجود.";
         }
 
         $stmt->close();
@@ -48,11 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>تسجيل الدخول</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body style="background-color: var(--blanc);">
 
 <div class="container mt-5" style="max-width: 500px;">
-  <h2 class="text-center mb-4" style="font-family: var(--font-heading);">Login</h2>
+  <h2 class="text-center mb-4" style="font-family: var(--font-heading);">تسجيل الدخول</h2>
     <br>
   <?php if (!empty($errors)): ?>
   <div class="alert alert-danger">
@@ -81,21 +81,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br>
   <form method="POST" action="login.php">
     <div class="mb-3">
-      <label for="email" class="form-label" style="font-family: var(--font-base);">Email Address</label>
+      <label for="email" class="form-label" style="font-family: var(--font-base);">عنوان البريد الإلكتروني</label>
       <input type="email" class="form-control" id="email" name="email"
              value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
     </div>
 
     <div class="mb-3">
-      <label for="password" class="form-label" style="font-family: var(--font-base);">Password</label>
+      <label for="password" class="form-label" style="font-family: var(--font-base);">كلمة المرور</label>
       <input type="password" class="form-control" id="password" name="password" required>
     </div>
 
-    <button type="submit" class="btn w-100" style="background-color: var(--stone); color: white;">Login</button>
+    <button type="submit" class="btn w-100" style="background-color: var(--stone); color: white;">تسجيل الدخول</button>
   </form>
 
   <p class="text-center mt-3" style="font-family: var(--font-base);">
-    Don't have an account? <a href="register.php" style="color: var(--golden);">Register here</a>
+    ليس لديك حساب؟ <a href="register.php" style="color: var(--golden);">سجل هنا</a>
   </p>
 </div>
 
