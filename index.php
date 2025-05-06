@@ -45,7 +45,36 @@ if ($result) {
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <style>/* تنسيق الصورة الأساسية */
+.image-wrapper {
+  position: relative;
+}
 
+.card-img-top {
+  width: 100%;
+  transition: opacity 0.3s ease-in-out; /* إضافة تأثير انتقال للظهور */
+}
+
+/* الصورة الثانية التي ستظهر عند التمرير */
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* الصورة الثانية مخفية بشكل افتراضي */
+  transition: opacity 0.3s ease-in-out; /* إضافة تأثير انتقال عند الظهور */
+}
+
+/* عند التمرير على البطاقة بأكملها يظهر تأثير الـ hover */
+.product-card:hover .hover-image {
+  opacity: 1; /* تظهر الصورة الثانية عند التمرير على البطاقة */
+}
+
+.product-card:hover .main-image {
+  opacity: 0; /* إخفاء الصورة الأساسية عند التمرير على البطاقة */
+}
+</style>
 </head>
 
 <body>
@@ -128,30 +157,41 @@ if ($result) {
   </section>
 
 
-  <div class="container py-5">
-
-    <!-- الأكثر مبيعاً -->
-    <section class="mb-5">
-      <h2 class="text-center section-title">الأكثر مبيعًا</h2>
-      <hr>
-      <div class="row">
-      <?php foreach ($best_seller as $product): ?>
-  <div class="col-md-4 mb-4 d-flex">
-    <div class="card product-card">
-      <img src="<?php echo htmlspecialchars($product['images']); ?>" alt="صورة المنتج" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-        <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
-      </div>
+  <div class="container">
+    <!-- افضل العطور  -->
+    <section>
+        <h2 class="text-center section-title" id="women-perfumes">أفضل العطور</h2>
+        <hr>
+        <div class="row">
+            <?php foreach ($best_seller as $product): ?>
+                <?php
+                    // معالجة الصور
+                    $image1 = htmlspecialchars($product['images']);
+                    $image2 = preg_replace('/-1(\.\w+)$/', '-2$1', $image1);
+                    $productName = htmlspecialchars($product['product_name']);
+                    $productDescription = htmlspecialchars($product['description']);
+                    $productId = htmlspecialchars($product['id']);
+                ?>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="card product-card">
+                        <div class="image-wrapper position-relative">
+                            <!-- الصورة الأساسية -->
+                            <img src="<?php echo $image1; ?>" alt="صورة المنتج - <?php echo $productName; ?>" class="card-img-top main-image">
+                            <!-- الصورة الثانية المحلية -->
+                            <img src="<?php echo $image2; ?>" alt="صورة أخرى - <?php echo $productName; ?>" class="card-img-top hover-image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $productName; ?></h5>
+                            <p class="card-text"><?php echo $productDescription; ?></p>
+                            <a href="product.php?id=<?php echo $productId; ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </section>
+</div>
 
-  </div>
 
   <!-- Decorative Image 1 -->
   <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
@@ -165,18 +205,30 @@ if ($result) {
       <hr>
       <div class="row">
       <?php foreach ($men_products as $product): ?>
-  <div class="col-md-4 mb-4 d-flex">
-    <div class="card product-card">
-      <img src="<?php echo htmlspecialchars($product['images']); ?>" alt="صورة المنتج" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-        <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
+                <?php
+                    // معالجة الصور
+                    $image1 = htmlspecialchars($product['images']);
+                    $image2 = preg_replace('/-1(\.\w+)$/', '-2$1', $image1);
+                    $productName = htmlspecialchars($product['product_name']);
+                    $productDescription = htmlspecialchars($product['description']);
+                    $productId = htmlspecialchars($product['id']);
+                ?>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="card product-card">
+                        <div class="image-wrapper position-relative">
+                            <!-- الصورة الأساسية -->
+                            <img src="<?php echo $image1; ?>" alt="صورة المنتج - <?php echo $productName; ?>" class="card-img-top main-image">
+                            <!-- الصورة الثانية المحلية -->
+                            <img src="<?php echo $image2; ?>" alt="صورة أخرى - <?php echo $productName; ?>" class="card-img-top hover-image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $productName; ?></h5>
+                            <p class="card-text"><?php echo $productDescription; ?></p>
+                            <a href="product.php?id=<?php echo $productId; ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
       </div>
     </section>
   </div>
@@ -193,16 +245,26 @@ if ($result) {
       <hr>
       <div class="row">
       <?php foreach ($women_products as $product): ?>
-  <div class="col-md-4 mb-4 d-flex">
-    <div class="card product-card">
-      <img src="<?php echo htmlspecialchars($product['images']); ?>" alt="صورة المنتج" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-        <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
-      </div>
+        <div class="col-md-4 mb-4 d-flex">
+  <div class="card product-card">
+    <div class="image-wrapper position-relative">
+    <?php
+        $image1 = htmlspecialchars($product['images']);
+        $image2 = preg_replace('/-1(\.\w+)$/', '-2$1', $image1);
+    ?>
+      <!-- الصورة الأساسية -->
+      <img src="<?php echo $image1; ?>"  alt="صورة المنتج" class="card-img-top main-image">
+      <!-- الصورة الثانية المحلية -->
+      <img src="<?php echo $image2; ?>"  alt="صورة أخرى" class="card-img-top hover-image">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
+      <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+      <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
     </div>
   </div>
+</div>
+
 <?php endforeach; ?>
 
       </div>
@@ -219,18 +281,30 @@ if ($result) {
       <hr>
       <div class="row">
       <?php foreach ($unisex_products as $product): ?>
-  <div class="col-md-4 mb-4 d-flex">
-    <div class="card product-card">
-      <img src="<?php echo htmlspecialchars($product['images']); ?>" alt="صورة المنتج" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
-        <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
-        <a href="product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
+                <?php
+                    // معالجة الصور
+                    $image1 = htmlspecialchars($product['images']);
+                    $image2 = preg_replace('/-1(\.\w+)$/', '-2$1', $image1);
+                    $productName = htmlspecialchars($product['product_name']);
+                    $productDescription = htmlspecialchars($product['description']);
+                    $productId = htmlspecialchars($product['id']);
+                ?>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="card product-card">
+                        <div class="image-wrapper position-relative">
+                            <!-- الصورة الأساسية -->
+                            <img src="<?php echo $image1; ?>" alt="صورة المنتج - <?php echo $productName; ?>" class="card-img-top main-image">
+                            <!-- الصورة الثانية المحلية -->
+                            <img src="<?php echo $image2; ?>" alt="صورة أخرى - <?php echo $productName; ?>" class="card-img-top hover-image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $productName; ?></h5>
+                            <p class="card-text"><?php echo $productDescription; ?></p>
+                            <a href="product.php?id=<?php echo $productId; ?>" class="btn btn-stone w-100">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
       </div>
     </section>
 
