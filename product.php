@@ -40,6 +40,8 @@ $conn->close();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+
 .product-image-wrapper {
     position: relative;
     width: 100%;
@@ -78,8 +80,8 @@ $conn->close();
 
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container" style="margin-left: 0 !important;">
       <a class="navbar-brand d-flex align-items-center justify-content-center" href="index.php" style="width: 81%; height: 100%;">
           <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="max-width: 10%; height: auto; padding-bottom:0 px;margin-bottom:0 px;">
@@ -87,7 +89,7 @@ $conn->close();
       </a>
 
       <button class="btn btn-outline-secondary " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-      <img src="images/icon/menu.png" alt=""width="24" height="24">
+      ☰
       </button>
 
 </nav>
@@ -112,13 +114,13 @@ $conn->close();
             <a href="index.php" class="nav-link text-dark">الرئيسية</a>
           </li>
           <li>
-            <a href="index.php#men-perfumes" class="nav-link text-dark">عطور له</a>
+            <a href="#men-perfumes" class="nav-link text-dark">عطور له</a>
           </li>
           <li>
-            <a href="index.php#women-perfumes" class="nav-link text-dark">عطور لها</a>
+            <a href="#women-perfumes" class="nav-link text-dark">عطور لها</a>
           </li>
           <li>
-            <a href="index.php#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
+            <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
           </li>
           <?php if ($role === 'admin'): ?>
             <li><a href="users.php" class="nav-link text-dark">لوحة التحكم</a></li>
@@ -142,6 +144,7 @@ $conn->close();
       </div>
     </div>
   </div>
+
 
 
     <div class="container mt-5">
@@ -199,12 +202,18 @@ $conn->close();
             </div>
 
             <!-- أزرار الشراء -->
-            <button class="btn btn-primary me-2" style="background-color: #D29F13;">اشتري الآن</button>
+            <button class="btn btn-primary me-2" style="background-color: #D29F13; border-color:white">اشتري الآن</button>
             <a href="index.php" class="btn btn-stone btn-secondary">رجوع</a>
         </div>
     </div>
 </div>
-
+                       <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2025 عطورات  <span style="font-family: 'Monsieur La Doulaise'">Emad  Aladel</span> - جميع الحقوق محفوظة</p>
+    </div>
+    
+  </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

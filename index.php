@@ -32,10 +32,7 @@ if ($result) {
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<style> 
-@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
-  
-</style>
+
 <head>
   <meta charset="UTF-8">
   <title>Emad Aladl | perfume </title>
@@ -47,6 +44,8 @@ if ($result) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <style>/* تنسيق الصورة الأساسية */
+  @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+
 .image-wrapper {
   position: relative;
 }
