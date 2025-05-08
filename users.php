@@ -115,8 +115,8 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
 
 <div class="container py-5">
     <div class="card shadow mb-4">
-        <div class="header">
-            <h4 class="mb-1 ps-3">إضافة مستخدم جديد</h4>
+        <div class="header-user">
+            <h4 class="mb-0">إضافة مستخدم</h4>
         </div>
         <div class="card-body">
             <form method="POST" class="form-container">
