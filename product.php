@@ -203,7 +203,7 @@ $conn->close();
 
             <!-- أزرار الشراء -->
             <button class="btn btn-primary me-2" style="background-color: #D29F13; border-color:white">اشتري الآن</button>
-            <a href="index.php" class="btn btn-stone btn-secondary">رجوع</a>
+            <a href="index.php" class="btn btn-stone btn-secondary">رجوع</a><br><br>
         </div>
     </div>
 </div>
