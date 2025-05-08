@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db_connection.php';
+require 'Database/db_connection.php';
 
 $errors = [];
 $email = '';
