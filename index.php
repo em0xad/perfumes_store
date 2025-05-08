@@ -121,7 +121,10 @@ if ($result) {
             <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
           </li>
           <?php if ($role === 'admin'): ?>
-            <li><a href="users.php" class="nav-link text-dark">لوحة التحكم</a></li>
+            <li><a href="users.php" class="nav-link text-dark"> إدارة المستخدمين</a></li>
+          <?php endif; ?>
+          <?php if ($role === 'admin'||$role==='user'): ?>
+            <li><a href="products.php" class="nav-link text-dark"> إدارة المنتجات</a></li>
           <?php endif; ?>
         </ul>
         <hr>

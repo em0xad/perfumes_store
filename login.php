@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'Database/db_connection.php';
-
+$role = $_SESSION['role'] ?? null;
 $errors = [];
 $email = '';
 
@@ -53,15 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <!-- Custom CSS File -->
     <link href="style.css" rel="stylesheet">
 </head>
 <body style="background-color: var(--blanc);">
@@ -98,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ليس لديك حساب؟ <a href="register.php" style="color: var(--golden);">سجل هنا</a>
   </p>
 </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
