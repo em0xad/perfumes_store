@@ -53,6 +53,8 @@ $products = mysqli_query($conn, "SELECT * FROM products");
     <title>إدارة المنتجات</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+
 :root {
     --golden: rgb(210, 159, 19);
     --dusty-pink: rgb(221, 188, 176);
@@ -186,7 +188,8 @@ body {
                 </div>
                 <div class="col-md-6">
                     <select name="category" class="form-control" required>
-                        <option value="men" <?= $edit_mode && $edit_data['category'] == 'men' ? 'selected' : '' ?>>رجالي</option>
+                        <option value="  @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+" <?= $edit_mode && $edit_data['category'] == 'men' ? 'selected' : '' ?>>رجالي</option>
                         <option value="women" <?= $edit_mode && $edit_data['category'] == 'women' ? 'selected' : '' ?>>نسائي</option>
                         <option value="women" <?= $edit_mode && $edit_data['category'] == 'unisex' ? 'selected' : '' ?>>للجنسءين</option>
                     </select>
@@ -233,8 +236,19 @@ body {
       </div>
       <div class="modal-body">
         <p><strong>الوصف:</strong> <?= htmlspecialchars($product['description']) ?></p>
-        <p><strong>الفئة:</strong> <?= htmlspecialchars($product['category']) ?></p>
-        <p><strong>تفاصيل العطر:</strong> <?= htmlspecialchars($product['perfume_detail']) ?></p>
+        <p><strong>الفئة:</strong> 
+                  <?php  
+                      if (htmlspecialchars(str_replace('_', ' ', trim($product['category']))) == "best seller") {
+                          echo 'الأكثر مبيعا';
+                      } elseif(htmlspecialchars($product['category'])=='men') {
+                          echo ' رجالي';
+                      }
+                      elseif(htmlspecialchars($product['category'])=='women') {
+                        echo ' نسائي';
+                      }
+                      else echo' للجنسيين';
+                   ?>
+            </p>        <p><strong>تفاصيل العطر:</strong> <?= htmlspecialchars($product['perfume_detail']) ?></p>
         <p><strong>نوتات العطر:</strong> <?= htmlspecialchars($product['perfume_notes']) ?></p>
       </div>
       <div class="modal-footer justify-content-between">

@@ -61,6 +61,8 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
     <title>إدارة المستخدمين</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <style>
+          @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+
         :root {
             --golden: rgb(210, 159, 19);
             --dusty-pink: rgb(221, 188, 176);
