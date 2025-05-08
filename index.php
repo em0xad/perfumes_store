@@ -66,13 +66,12 @@ if ($result) {
   transition: opacity 0.3s ease-in-out; /* إضافة تأثير انتقال عند الظهور */
 }
 
-/* عند التمرير على البطاقة بأكملها يظهر تأثير الـ hover */
 .product-card:hover .hover-image {
-  opacity: 1; /* تظهر الصورة الثانية عند التمرير على البطاقة */
+  opacity: 1; 
 }
 
 .product-card:hover .main-image {
-  opacity: 0; /* إخفاء الصورة الأساسية عند التمرير على البطاقة */
+  opacity: 0; 
 }
 </style>
 </head>
@@ -175,9 +174,7 @@ if ($result) {
                 <div class="col-md-4 mb-4 d-flex">
                     <div class="card product-card">
                         <div class="image-wrapper position-relative">
-                            <!-- الصورة الأساسية -->
                             <img src="<?php echo $image1; ?>" alt="صورة المنتج - <?php echo $productName; ?>" class="card-img-top main-image">
-                            <!-- الصورة الثانية المحلية -->
                             <img src="<?php echo $image2; ?>" alt="صورة أخرى - <?php echo $productName; ?>" class="card-img-top hover-image">
                         </div>
                         <div class="card-body">
@@ -289,9 +286,7 @@ if ($result) {
                 <div class="col-md-4 mb-4 d-flex">
                     <div class="card product-card">
                         <div class="image-wrapper position-relative">
-                            <!-- الصورة الأساسية -->
                             <img src="<?php echo $image1; ?>" alt="صورة المنتج - <?php echo $productName; ?>" class="card-img-top main-image">
-                            <!-- الصورة الثانية المحلية -->
                             <img src="<?php echo $image2; ?>" alt="صورة أخرى - <?php echo $productName; ?>" class="card-img-top hover-image">
                         </div>
                         <div class="card-body">
