@@ -32,10 +32,7 @@ if ($result) {
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<style> 
-@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
-  
-</style>
+
 <head>
   <meta charset="UTF-8">
   <title>Emad Aladl | perfume </title>
@@ -47,6 +44,8 @@ if ($result) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <style>/* تنسيق الصورة الأساسية */
+  @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+
 .image-wrapper {
   position: relative;
 }
@@ -157,11 +156,11 @@ if ($result) {
     </div>
   </section>
 
-
+              <br>
   <div class="container">
-    <!-- افضل العطور  -->
+    <!--  الأكثر مبيعا  -->
     <section>
-        <h2 class="text-center section-title" id="women-perfumes">أفضل العطور</h2>
+        <h2 class="text-center section-title" id="women-perfumes">الأكثر مبيعا</h2>
         <hr>
         <div class="row">
             <?php foreach ($best_seller as $product): ?>
@@ -207,7 +206,6 @@ if ($result) {
       <div class="row">
       <?php foreach ($men_products as $product): ?>
                 <?php
-                    // معالجة الصور
                     $image1 = htmlspecialchars($product['images']);
                     $image2 = preg_replace('/-1(\.\w+)$/', '-2$1', $image1);
                     $productName = htmlspecialchars($product['product_name']);
@@ -217,9 +215,7 @@ if ($result) {
                 <div class="col-md-4 mb-4 d-flex">
                     <div class="card product-card">
                         <div class="image-wrapper position-relative">
-                            <!-- الصورة الأساسية -->
                             <img src="<?php echo $image1; ?>" alt="صورة المنتج - <?php echo $productName; ?>" class="card-img-top main-image">
-                            <!-- الصورة الثانية المحلية -->
                             <img src="<?php echo $image2; ?>" alt="صورة أخرى - <?php echo $productName; ?>" class="card-img-top hover-image">
                         </div>
                         <div class="card-body">
