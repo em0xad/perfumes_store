@@ -95,7 +95,7 @@ $conn->close();
 </nav>
 
 
-    <!-- Side Nav (Offcanvas) -->
+    <!-- Side Nav  -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
       
       <div class="offcanvas-header">
@@ -148,7 +148,7 @@ $conn->close();
 
 
     <div class="container mt-5">
-    <h1 class="text-center mb-4">تفاصيل المنتج</h1>
+    <h1 class="text-center mb-4">تفاصيل العطر</h1>
               <hr>
     <div class="row">
     <div class="col-md-6">
@@ -169,7 +169,6 @@ $conn->close();
 
 
         <div class="col-md-6">
-            <!-- عرض تفاصيل المنتج -->
             <h2><?php echo htmlspecialchars($product['product_name']); ?></h2>
             <p><strong>الفئة:</strong> 
                   <?php  
@@ -195,19 +194,17 @@ $conn->close();
             <p><strong>الحجم:80 مل</strong>  
                 <span class="text-success fw-bold"></span>
             </p>
-            <!-- ✅ خانة الكمية -->
             <div class="mb-3">
                 <label for="quantity" class="form-label"><strong>الكمية:</strong></label>
                 <input type="number" id="quantity" name="quantity" class="form-control w-50" value="1" min="1" >
             </div>
 
-            <!-- أزرار الشراء -->
             <button class="btn btn-primary me-2" style="background-color: #D29F13; border-color:white">اشتري الآن</button>
-            <a href="index.php" class="btn btn-stone btn-secondary">رجوع</a>
+            <a href="index.php" class="btn btn-stone btn-secondary">رجوع</a><br><br>
         </div>
     </div>
 </div>
-                       <!-- Footer -->
+         <!-- Footer -->
   <footer>
     <div class="container">
       <p class="mb-0">© 2025 عطورات  <span style="font-family: 'Monsieur La Doulaise'">Emad  Aladel</span> - جميع الحقوق محفوظة</p>
