@@ -15,6 +15,7 @@ if (!$row || $row['role'] != 'admin') {
     exit();
 }
 
+// حذف مستخدم
 if (isset($_GET['delete'])) {
     $delete_id = intval($_GET['delete']);
     if ($delete_id != $user_id) {
@@ -23,6 +24,30 @@ if (isset($_GET['delete'])) {
         exit();
     } else {
         echo "<script>alert('❌ لا يمكنك حذف حسابك كمشرف.');</script>";
+    }
+}
+
+// إضافة مستخدم جديد
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+
+    // التحقق من الحقول
+    if (empty($username) || empty($email) || empty($password) || empty($role)) {
+        echo "<script>alert('⚠️ الرجاء تعبئة جميع الحقول.');</script>";
+    } else {
+        // تحقق من البريد الإلكتروني
+        $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email = '$email'");
+        if (mysqli_num_rows($check_email) > 0) {
+            echo "<script>alert('⚠️ البريد الإلكتروني مستخدم مسبقًا.');</script>";
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            mysqli_query($conn, "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', '$role')");
+            header("Location: users.php");
+            exit();
+        }
     }
 }
 
@@ -47,8 +72,7 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
             background-color: var(--blanc);
             font-family: 'Tahoma', sans-serif;
         }
-
-        .header {
+        .header-user {
             background-color: var(--stone);
             color: var(--blanc);
             padding: 1rem 1.5rem;
@@ -69,20 +93,61 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
         }
 
         .badge-admin {
-            background-color: var(--golden);
+            background-color: rgb(210, 100, 19);
         }
 
         .badge-user {
             background-color: var(--stone);
         }
+
+        .form-container {
+            background-color: white;
+            padding: 1.5rem;
+            border: 1px solid var(--dusty-pink);
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+       
     </style>
 </head>
 <body>
 
 <div class="container py-5">
-    <div class="card shadow">
+    <div class="card shadow mb-4">
         <div class="header">
-            <h4 class="mb-0">إدارة المستخدمين</h4>
+            <h4 class="mb-1 ps-3">إضافة مستخدم جديد</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST" class="form-container">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <input type="text" name="username" class="form-control" placeholder="اسم المستخدم" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="email" name="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="password" name="password" class="form-control" placeholder="كلمة المرور" required>
+                    </div>
+                    <div class="col-md-3">
+                        <select name="role" class="form-select" required>
+                            <option value="">اختر الدور</option>
+                            <option value="user">مستخدم</option>
+                            <option value="admin">مشرف</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mx-auto">
+                        <button type="submit" name="add_user" class="btn btn-golden w-100">إضافة</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="header-user">
+            <h4 class="mb-0">قائمة المستخدمين</h4>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover text-center align-middle">
