@@ -143,7 +143,7 @@ body {
     <div class="card h-100 d-flex flex-column">
         <div class="card-body d-flex flex-column">
             <h5 class="card-title text-center"><?= htmlspecialchars($product['product_name']) ?></h5>
-            <p class="price text-center"><?= htmlspecialchars($product['price']) ?> ريال</p>
+            <p class="price text-center"><?= htmlspecialchars($product['price']) ?> دولار</p>
 
             <div class="mt-auto text-center pt-2">
                 <!-- زر فتح التفاصيل -->
