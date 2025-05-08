@@ -46,9 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // إذا لا يوجد أخطاء، قم بإدخال البيانات
     if (empty($errors)) {
-        $hashed = password_hash($password, PASSWORD_DEFAULT);
+        // بدون تشفير كلمة المرور
         $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $email, $hashed);
+        $stmt->bind_param("sss", $username, $email, $password); // لا حاجة لتشفير كلمة المرور هنا
         if ($stmt->execute()) {
             header("Location: login.php");
             exit;
@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
