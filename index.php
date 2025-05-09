@@ -104,7 +104,7 @@ if ($result) {
       <div class="offcanvas-body">
         <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
           <img src="images/logo/logo1.png" alt="Logo" style="height: 50px; width: auto;" class="me-2">
-          <span style="color: #D29F13; font-weight: bold;">Emad Aaldl</span>
+          <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -304,12 +304,34 @@ if ($result) {
     </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p class="mb-0">© 2025 عطورات  <span style="font-family: 'Monsieur La Doulaise'">Emad  Aladel</span> - جميع الحقوق محفوظة</p>
+  <footer class="text-center mt-5" style=" padding: 30px 0;">
+  <div class="container">
+    <!-- الشعار في المنتصف -->
+    <a href="index.php" class="d-flex flex-column align-items-center text-decoration-none mb-3">
+      <img src="images/logo/logo1.png" alt="Logo" style="height: 50px; width: auto;" class="mb-2">
+      <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise'; font-size: 1.5rem;">Emad Aaldl</span>
+    </a>
+
+    <!-- عنوان التواصل -->
+    <h5 class="mb-3" style="font-family: 'Poppins', sans-serif; font-weight: 600;">تواصل معنا</h5>
+
+    <!-- أيقونات التواصل -->
+    <div class="d-flex justify-content-center gap-4 mb-4">
+      <a href="https://wa.me/963949605684" target="_blank" class="text-success fs-4" title="واتساب">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="mailto:emad.aladl.2025@email.com" class="text-primary fs-4" title="بريد إلكتروني">
+        <i class="fas fa-envelope"></i>
+      </a>
     </div>
-    
-  </footer>
+
+    <!-- نص الحقوق -->
+    <p class="mb-0" style="font-family: 'Poppins', sans-serif;">
+      © 2025 عطورات <span style="font-family: 'Monsieur La Doulaise'">Emad Aladel</span> - جميع الحقوق محفوظة
+    </p>
+  </div>
+</footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

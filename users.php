@@ -141,7 +141,7 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
       <div class="offcanvas-body">
         <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
           <img src="images/logo/logo1.png" alt="Logo" style="height: 50px; width: auto;" class="me-2">
-          <span style="color: #D29F13; font-weight: bold;">Emad Aaldl</span>
+          <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise';">Emad Aaldl</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
