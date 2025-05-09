@@ -11,7 +11,7 @@ $user_id = $_SESSION['user_id'];
 $check_admin = mysqli_query($conn, "SELECT role FROM users WHERE id = $user_id LIMIT 1");
 $row = mysqli_fetch_assoc($check_admin);
 if (!$row || $row['role'] != 'admin') {
-    echo "<div style='margin: 20px;'>🚫 لا تملك صلاحية الدخول إلى هذه الصفحة.</div>";
+    echo "<div style='margin: 20px;'> لا تملك صلاحية الدخول إلى هذه الصفحة.</div>";
     exit();
 }
 
@@ -23,7 +23,7 @@ if (isset($_GET['delete'])) {
         header("Location: users.php");
         exit();
     } else {
-        echo "<script>alert('❌ لا يمكنك حذف حسابك كمشرف.');</script>";
+        echo "<script>alert(' لا يمكنك حذف حسابك كمشرف.');</script>";
     }
 }
 
@@ -36,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
 
     // التحقق من الحقول
     if (empty($username) || empty($email) || empty($password) || empty($role)) {
-        echo "<script>alert('⚠️ الرجاء تعبئة جميع الحقول.');</script>";
+        echo "<script>alert(' الرجاء تعبئة جميع الحقول.');</script>";
     } else {
         // تحقق من البريد الإلكتروني
         $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email = '$email'");
         if (mysqli_num_rows($check_email) > 0) {
-            echo "<script>alert('⚠️ البريد الإلكتروني مستخدم مسبقًا.');</script>";
+            echo "<script>alert(' البريد الإلكتروني مستخدم مسبقًا.');</script>";
         } else {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             mysqli_query($conn, "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', '$role')");
@@ -130,7 +130,7 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
 </nav>
 
 
-    <!-- Side Nav (Offcanvas) -->
+    <!-- Side Nav  -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
       
       <div class="offcanvas-header">

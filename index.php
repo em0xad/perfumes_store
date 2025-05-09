@@ -45,7 +45,7 @@ if ($result) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <style>/* تنسيق الصورة الأساسية */
+  <style>
   @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
 
 .image-wrapper {
@@ -54,7 +54,7 @@ if ($result) {
 
 .card-img-top {
   width: 100%;
-  transition: opacity 0.3s ease-in-out; /* إضافة تأثير انتقال للظهور */
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* الصورة الثانية التي ستظهر عند التمرير */
@@ -64,8 +64,8 @@ if ($result) {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0; /* الصورة الثانية مخفية بشكل افتراضي */
-  transition: opacity 0.3s ease-in-out; /* إضافة تأثير انتقال عند الظهور */
+  opacity: 0; 
+  transition: opacity 0.3s ease-in-out; 
 }
 
 .product-card:hover .hover-image {
@@ -95,7 +95,7 @@ if ($result) {
 </nav>
 
 
-    <!-- Side Nav (Offcanvas) -->
+    <!-- Side Nav -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
       
       <div class="offcanvas-header">
@@ -149,10 +149,6 @@ if ($result) {
   </div>
 
 
-
-  
-  <!--banner-->
-
   <section class="hero-banner d-flex align-items-center text-center text-white" style="background-image: url('images//banner//slider1.jpg'); background-size: cover; background-position: center; height: 400px;">
     <div class="container">
       <h1 class="display-4 fw-bold" style="color:#D29F13;">اكتشف عالم العطور</h1>
@@ -195,7 +191,7 @@ if ($result) {
 </div>
 
 
-  <!-- Decorative Image 1 -->
+  <!--  Image 1 -->
   <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
     <img src="images/banner/5.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
   </div>
@@ -232,7 +228,7 @@ if ($result) {
     </section>
   </div>
 
-  <!-- Decorative Image 2 -->
+  <!--  Image 2 -->
   <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
     <img src="images/banner/4.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
   </div>
@@ -270,7 +266,7 @@ if ($result) {
     </section>
            
   </div>
-           <!-- Decorative Image 3 -->
+           <!-- Image 3 -->
            <div class="w-100 my-5" style="height: 300px; overflow: hidden;">
               <img src="images/banner/3.jpg" alt="Decoration" class="w-100 h-100" style="object-fit: cover;">
             </div>
@@ -308,7 +304,6 @@ if ($result) {
   <!-- Footer -->
   <footer class="text-center mt-5" style=" padding: 30px 0;">
   <div class="container">
-    <!-- الشعار في المنتصف -->
     <a href="index.php" class="d-flex flex-column align-items-center text-decoration-none mb-3">
       <img src="images/logo/logo1.png" alt="Logo" style="height: 50px; width: auto;" class="mb-2">
       <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise'; font-size: 1.5rem;">Emad Aaldl</span>
@@ -327,7 +322,6 @@ if ($result) {
       </a>
     </div>
 
-    <!-- نص الحقوق -->
     <p class="mb-0" style="font-family: 'Poppins', sans-serif;">
       © 2025 عطورات <span style="font-family: 'Monsieur La Doulaise'">Emad Aladel</span> - جميع الحقوق محفوظة
     </p>

@@ -6,7 +6,7 @@ $role = $_SESSION['role'] ?? null;
 if (isset($_GET['id'])) {
     $product_id = intval($_GET['id']);
 
-    // استعلام SQL لجلب تفاصيل المنتج بناءً على المعرف
+    // استعلام  لجلب تفاصيل المنتج بناءً على المعرف
     $sql = "SELECT * FROM products WHERE id = $product_id";
     $result = $conn->query($sql);
 
@@ -99,7 +99,7 @@ $conn->close();
 </nav>
 
 
-    <!-- Side Nav (Offcanvas) -->
+    <!-- Side Nav -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
       
       <div class="offcanvas-header">
@@ -214,16 +214,14 @@ $conn->close();
          <!-- Footer -->
          <footer class="text-center mt-5" style=" padding: 30px 0;">
   <div class="container">
-    <!-- الشعار في المنتصف -->
     <a href="index.php" class="d-flex flex-column align-items-center text-decoration-none mb-3">
       <img src="images/logo/logo1.png" alt="Logo" style="height: 50px; width: auto;" class="mb-2">
       <span style="color: #D29F13; font-weight: bold; font-family: 'Monsieur La Doulaise'; font-size: 1.5rem;">Emad Aaldl</span>
     </a>
 
-    <!-- عنوان التواصل -->
+
     <h5 class="mb-3" style="font-family: 'Poppins', sans-serif; font-weight: 600;">تواصل معنا</h5>
 
-    <!-- أيقونات التواصل -->
     <div class="d-flex justify-content-center gap-4 mb-4">
       <a href="https://wa.me/963949605684" target="_blank" class="text-success fs-4" title="واتساب">
         <i class="fab fa-whatsapp"></i>
@@ -233,7 +231,6 @@ $conn->close();
       </a>
     </div>
 
-    <!-- نص الحقوق -->
     <p class="mb-0" style="font-family: 'Poppins', sans-serif;">
       © 2025 عطورات <span style="font-family: 'Monsieur La Doulaise'">Emad Aladel</span> - جميع الحقوق محفوظة
     </p>

@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($stmt->num_rows == 1) {
           $stmt->bind_result($id, $username, $stored_password, $role);
           $stmt->fetch();
-          // التحقق من كلمة المرور المخزنة بدون الهاش
+          // التحقق من كلمة المرور المخزنة  
           if ($password === $stored_password) {
               $_SESSION["user_id"]   = $id;
               $_SESSION["username"]  = $username;

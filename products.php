@@ -110,7 +110,7 @@ body {
 </nav>
 
 
-    <!-- Side Nav (Offcanvas) -->
+    <!-- Side Nav  -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
       
       <div class="offcanvas-header">

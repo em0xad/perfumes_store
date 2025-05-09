@@ -1,65 +1,66 @@
-# Simple Perfume Store - PHP Project
+# متجر العطور البسيط - مشروع PHP
 
-This is a simple online perfume store developed as part of Homework 3 for the PHP course with midad.
-
----
-
-## Project Description
-- Users can register, log in, and log out.
-- Admins can manage users (add, edit, delete).
-- Registered users can manage products (add, edit, delete).
-- Visitors can browse the product list.
-- Each product includes a name, price, description, and an image.
+هذا مشروع بسيط لمتجر عطور إلكتروني تم تطويره كجزء من الواجب الثالث لمقرر PHP مع منصة مداد.
 
 ---
 
-## Technologies Used
-- PHP (Server Side)
-- MySQL (Database)
-- HTML & CSS
-- Bootstrap (for UI design)
-- Basic input validation
+## وصف المشروع  
+- يمكن للمستخدمين التسجيل وتسجيل الدخول وتسجيل الخروج.  
+- يمكن للمشرفين إدارة المستخدمين (إضافة، تعديل، حذف).  
+- يمكن للمستخدمين المسجلين إدارة المنتجات (إضافة، تعديل، حذف).  
+- يمكن للزوار تصفح قائمة المنتجات.  
+- يحتوي كل منتج على اسم وسعر ووصف وصورة.
 
 ---
 
-## Installation Instructions
-
-1. Clone the project or download the ZIP file.
-
-2. Set up the Database:
-   - Open XAMPP and start Apache and MySQL.
-   - Go to [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
-   - Create a new database named perfume_store.
-   - Import the SQL file located at /database/perfume_store.sql.
-
-3. Configure the connection:
-   - Check the db_connection.php file to ensure it matches your local settings:
-     - Host: localhost
-     - User: root
-     - Password: (empty)
-     - Database: perfume_store
-
-4. Run the project:
-   - Place the project folder inside the htdocs folder.
-   - Access the site at:  
-     http://localhost/perfume_store/
+## التقنيات المستخدمة  
+- PHP (الجهة الخادمية)  
+- MySQL (قاعدة البيانات)  
+- HTML وCSS  
+- Bootstrap (لتصميم واجهة المستخدم)  
+- التحقق الأساسي من صحة المدخلات
 
 ---
 
-## Default Login Information
-- Admin Email: admin@example.com
-- Password: 123456
+## خطوات التثبيت
+
+1. قم باستنساخ المشروع أو تحميله كملف ZIP.
+
+2. إعداد قاعدة البيانات:
+   - افتح XAMPP وابدأ Apache وMySQL.
+   - اذهب إلى [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+   - أنشئ قاعدة بيانات جديدة باسم `perfume_store`.
+   - قم باستيراد ملف SQL الموجود في المسار: `/database/perfume_store.sql`.
+
+3. إعداد الاتصال بقاعدة البيانات:
+   - تحقق من ملف `db_connection.php` وتأكد من أنه يتطابق مع إعداداتك المحلية:
+     - المضيف (Host): localhost  
+     - المستخدم (User): root  
+     - كلمة المرور (Password): (اتركها فارغة)  
+     - قاعدة البيانات (Database): perfume_store
+
+4. تشغيل المشروع:
+   - ضع مجلد المشروع داخل مجلد `htdocs`.
+   - ادخل إلى الموقع عبر الرابط التالي:  
+     [http://localhost/perfume_store/](http://localhost/perfume_store/)
+
+---
+
+## معلومات تسجيل الدخول الافتراضية  
+- البريد الإلكتروني للمشرف: `admin@example.com`  
+- كلمة المرور: `123456`  
   
-*(You can modify users or create new ones directly from the system.)*
+*(يمكنك تعديل المستخدمين أو إنشاء مستخدمين جدد مباشرةً من داخل النظام.)*
 
 ---
 
-## Notes
-- Passwords are securely hashed using password_hash().
-- Basic input validation is implemented for registration and login.
-- Admin pages are protected and accessible only to admin users.
-- Project built and tested locally on XAMPP.
+## ملاحظات  
+- يتم تشفير كلمات المرور باستخدام الدالة `password_hash()`.  
+- تم تنفيذ تحقق بسيط من صحة المدخلات أثناء التسجيل وتسجيل الدخول.  
+- صفحات المشرف محمية ولا يمكن الوصول إليها إلا من قبل مستخدمي "admin".  
+- تم بناء المشروع واختباره محليًا باستخدام XAMPP.
 
 ---
-## Developer
-Emad Aladl
+
+## المطوّر  
+عماد العدل
