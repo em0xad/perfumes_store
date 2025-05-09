@@ -37,7 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
     // التحقق من الحقول
     if (empty($username) || empty($email) || empty($password) || empty($role)) {
         echo "<script>alert(' الرجاء تعبئة جميع الحقول.');</script>";
-    } else {
+    } elseif (strlen($password) <= 6) {
+        echo "<script>alert(' يجب أن تحتوي كلمة المرور على أكثر من 6 محارف.');</script>";
+    } else
+    {
+     
         // تحقق من البريد الإلكتروني
         $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email = '$email'");
         if (mysqli_num_rows($check_email) > 0) {
