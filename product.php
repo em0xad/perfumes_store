@@ -1,5 +1,6 @@
 <?php
 include 'Database/db_connection.php';
+session_start();
 $role = $_SESSION['role'] ?? null;
 // الحصول على معرف المنتج من الرابط (URL)
 if (isset($_GET['id'])) {
@@ -82,8 +83,9 @@ $conn->close();
 
 </head>
 <body>
-   <!-- Navbar -->
-   <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container" style="margin-left: 0 !important;">
       <a class="navbar-brand d-flex align-items-center justify-content-center" href="index.php" style="width: 81%; height: 100%;">
           <img src="images/logo/logo1.png" alt="Logo" class="me-2" style="max-width: 10%; height: auto; padding-bottom:0 px;margin-bottom:0 px;">
@@ -97,7 +99,7 @@ $conn->close();
 </nav>
 
 
-    <!-- Side Nav  -->
+    <!-- Side Nav (Offcanvas) -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
       
       <div class="offcanvas-header">
@@ -116,16 +118,19 @@ $conn->close();
             <a href="index.php" class="nav-link text-dark">الرئيسية</a>
           </li>
           <li>
-            <a href="index.php#men-perfumes" class="nav-link text-dark">عطور له</a>
+            <a href="#men-perfumes" class="nav-link text-dark">عطور له</a>
           </li>
           <li>
-            <a href="index.php#women-perfumes" class="nav-link text-dark">عطور لها</a>
+            <a href="#women-perfumes" class="nav-link text-dark">عطور لها</a>
           </li>
           <li>
-            <a href="index.php#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
+            <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
           </li>
           <?php if ($role === 'admin'): ?>
-            <li><a href="users.php" class="nav-link text-dark">لوحة التحكم</a></li>
+            <li><a href="users.php" class="nav-link text-dark"> إدارة المستخدمين</a></li>
+          <?php endif; ?>
+          <?php if ($role === 'admin'||$role==='user'): ?>
+            <li><a href="products.php" class="nav-link text-dark"> إدارة المنتجات</a></li>
           <?php endif; ?>
         </ul>
         <hr>
