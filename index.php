@@ -40,6 +40,8 @@ if ($result) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <meta name="description" content="موقع عطور Emad Aladel يقدم أفخم العطور الشرقية والغربية بجودة عالية وتوصيل سريع.">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">

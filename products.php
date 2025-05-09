@@ -181,7 +181,7 @@ body {
                         <option value="  @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
 " <?= $edit_mode && $edit_data['category'] == 'men' ? 'selected' : '' ?>>رجالي</option>
                         <option value="women" <?= $edit_mode && $edit_data['category'] == 'women' ? 'selected' : '' ?>>نسائي</option>
-                        <option value="women" <?= $edit_mode && $edit_data['category'] == 'unisex' ? 'selected' : '' ?>>للجنسءين</option>
+                        <option value="women" <?= $edit_mode && $edit_data['category'] == 'unisex' ? 'selected' : '' ?>>للجنسين</option>
                     </select>
                 </div>
 
@@ -234,7 +234,7 @@ body {
                       elseif(htmlspecialchars($product['category'])=='women') {
                         echo ' نسائي';
                       }
-                      else echo' للجنسيين';
+                      else echo' للجنسين';
                    ?>
             </p>        <p><strong>تفاصيل العطر:</strong> <?= htmlspecialchars($product['perfume_detail']) ?></p>
         <p><strong>نوتات العطر:</strong> <?= htmlspecialchars($product['perfume_notes']) ?></p>

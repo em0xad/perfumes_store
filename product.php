@@ -116,13 +116,13 @@ $conn->close();
             <a href="index.php" class="nav-link text-dark">الرئيسية</a>
           </li>
           <li>
-            <a href="#men-perfumes" class="nav-link text-dark">عطور له</a>
+            <a href="index.php#men-perfumes" class="nav-link text-dark">عطور له</a>
           </li>
           <li>
-            <a href="#women-perfumes" class="nav-link text-dark">عطور لها</a>
+            <a href="index.php#women-perfumes" class="nav-link text-dark">عطور لها</a>
           </li>
           <li>
-            <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
+            <a href="index.php#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
           </li>
           <?php if ($role === 'admin'): ?>
             <li><a href="users.php" class="nav-link text-dark">لوحة التحكم</a></li>
