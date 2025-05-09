@@ -6,43 +6,44 @@ $errors = [];
 $email = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST["email"]);
-    $password = $_POST["password"];
+  $email = trim($_POST["email"]);
+  $password = $_POST["password"];
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "عنوان البريد الإلكتروني غير صالح.";
-    }
-    if (empty($password)) {
-        $errors[] = "كلمة المرور مطلوبة.";
-    }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errors[] = "عنوان البريد الإلكتروني غير صالح.";
+  }
+  if (empty($password)) {
+      $errors[] = "كلمة المرور مطلوبة.";
+  }
 
-    if (empty($errors)) {
-        $stmt = $conn->prepare(
-            "SELECT id, username, password, role FROM users WHERE email = ?"
-        );
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
+  if (empty($errors)) {
+      $stmt = $conn->prepare(
+          "SELECT id, username, password, role FROM users WHERE email = ?"
+      );
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $stmt->store_result();
 
-        if ($stmt->num_rows == 1) {
-            $stmt->bind_result($id, $username, $hashed, $role);
-            $stmt->fetch();
-            if (password_verify($password, $hashed)) {
-                // تخزين البيانات في الجلسة
-                $_SESSION["user_id"]   = $id;
-                $_SESSION["username"]  = $username;
-                $_SESSION["role"]      = $role;
+      if ($stmt->num_rows == 1) {
+          $stmt->bind_result($id, $username, $stored_password, $role);
+          $stmt->fetch();
+          // التحقق من كلمة المرور المخزنة بدون الهاش
+          if ($password === $stored_password) {
+              $_SESSION["user_id"]   = $id;
+              $_SESSION["username"]  = $username;
+              $_SESSION["role"]      = $role;
 
-                header("Location: index.php");
-                exit;
-            } else {
-                $errors[] = "كلمة المرور غير صحيحة.";
-            }
-        } else {
-            $errors[] = "البريد الإلكتروني غير موجود.";
-        }
+              header("Location: index.php");
+              exit;
+          } else {
+              $errors[] = "كلمة المرور غير صحيحة.";
+          }
+      } else {
+          $errors[] = "البريد الإلكتروني غير موجود.";
+      }
 
-        $stmt->close();
+      $stmt->close();
+  
     }
 }
 ?>

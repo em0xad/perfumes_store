@@ -49,7 +49,6 @@ $products = mysqli_query($conn, "SELECT * FROM products");
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <title>إدارة المنتجات</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
    <style>
@@ -128,15 +127,6 @@ body {
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
             <a href="index.php" class="nav-link text-dark">الرئيسية</a>
-          </li>
-          <li>
-            <a href="#men-perfumes" class="nav-link text-dark">عطور له</a>
-          </li>
-          <li>
-            <a href="#women-perfumes" class="nav-link text-dark">عطور لها</a>
-          </li>
-          <li>
-            <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
           </li>
           <?php if ($role === 'admin'): ?>
             <li><a href="users.php" class="nav-link text-dark"> إدارة المستخدمين</a></li>
@@ -217,7 +207,6 @@ body {
             <p class="price text-center"><?= htmlspecialchars($product['price']) ?> دولار</p>
 
             <div class="mt-auto text-center pt-2">
-                <!-- زر فتح التفاصيل -->
                 <button class="btn btn-golden btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal<?= $product['id'] ?>">
                     عرض التفاصيل
                 </button>
@@ -226,7 +215,6 @@ body {
     </div>
 </div>
 
-<!-- Modal التفاصيل -->
 <div class="modal fade" id="detailsModal<?= $product['id'] ?>" tabindex="-1" aria-labelledby="modalLabel<?= $product['id'] ?>" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">

@@ -148,15 +148,6 @@ $users = mysqli_query($conn, "SELECT id, username, email, role FROM users");
           <li class="nav-item">
             <a href="index.php" class="nav-link text-dark">الرئيسية</a>
           </li>
-          <li>
-            <a href="#men-perfumes" class="nav-link text-dark">عطور له</a>
-          </li>
-          <li>
-            <a href="#women-perfumes" class="nav-link text-dark">عطور لها</a>
-          </li>
-          <li>
-            <a href="#unisex-perfumes" class="nav-link text-dark">عطور للجنسين</a>
-          </li>
           <?php if ($role === 'admin'): ?>
             <li><a href="users.php" class="nav-link text-dark"> إدارة المستخدمين</a></li>
           <?php endif; ?>
