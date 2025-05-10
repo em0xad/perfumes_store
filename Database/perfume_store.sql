@@ -84,11 +84,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'emad', 'emad.aladl@gmail.com', '$2y$10$inbAGuRCBh4kylZ9WnFyZOPv/yzBlYRbDBGuCk8oYr6gcUTDwB/.W', 'admin'),
-(2, 'ali', 'ali@gmail.com', '$2y$10$fkwvdPJE53oke8lpFPzuA.gsWFuN7KbAUx32pk3xd/U6RLsZMXFCC', 'user'),
-(3, 'omar65', 'omar@gmail.com', '$2y$10$IaR4JQUfgyv27dmvxc4Ir.ln3Z.Cd0dp0SkfuudODfbltivrfbLhq', 'user'),
-(4, 'ahmad', 'ahmad@gmail.com', '$2y$10$x5nPt9dHaJB/9JJHCJX3IeozAdkcb2RQ/8oQ58xJJOm024JeP.z82', 'user'),
-(5, 'admin', 'admin@example.com', '$2y$10$Vm5H5nACWv74q0VnuVMWMunIFknGJLPI8q8hBBx/IPxy/vH76CB6y', 'admin');
+(1, 'emad', 'emad.aladl@gmail.com', '123456', 'admin'),
+(2, 'ali', 'ali@gmail.com', '333333', 'user'),
+(3, 'omar65', 'omar@gmail.com', '111111', 'user'),
+(4, 'ahmad', 'ahmad@gmail.com', '222222', 'user'),
+(5, 'admin', 'admin@example.com', '555555', 'admin');
 
 --
 -- Indexes for dumped tables
