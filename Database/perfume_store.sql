@@ -36,7 +36,7 @@ CREATE TABLE `products` (
   `category` enum('men','women','unisex','best_seller') NOT NULL,
   `perfume_detail` varchar(1000) NOT NULL DEFAULT ' لايوجد وصف',
   `perfume_notes` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
 
 --
 -- Dumping data for table `products`
